@@ -62,6 +62,19 @@ prompt_segment() {
   [[ -n $3 ]] && echo -n $3
 }
 
+prompt_rsegment() {
+  local bg fg
+  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
+  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+  if [[ $CURRENT_RBG != 'NONE' && $1 != $CURRENT_RBG ]]; then
+    echo -n " %{$fg%F{black}%}$RSEGMENT_SEPARATOR%{$fg%}%{$bg%} "
+  else
+    echo -n "%{$bg%}%{$fg%} "
+  fi
+  CURRENT_RBG=$1
+  [[ -n $3 ]] && echo -n $3
+}
+
 # End the prompt, closing any open segments
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
@@ -188,15 +201,20 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
+prompt_rvm() {
+  prompt_rsegment black default "$(~/.rvm/bin/rvm-prompt i v g)"
+}
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_virtualenv
   prompt_context
-  prompt_dir
+  prompt_rvm
   prompt_git
   prompt_hg
+  prompt_dir
   prompt_end
 }
 
