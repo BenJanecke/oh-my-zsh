@@ -202,7 +202,7 @@ prompt_status() {
 }
 
 prompt_rvm() {
-  prompt_rsegment black default "$(~/.rvm/bin/rvm-prompt i v g)"
+  prompt_segment black default "$(~/.rvm/bin/rvm-prompt i v g)"
 }
 
 ## Main prompt
