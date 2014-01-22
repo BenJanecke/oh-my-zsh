@@ -201,8 +201,15 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
-prompt_rvm() {
-  prompt_segment black default "$(~/.rvm/bin/rvm-prompt i v g)"
+prompt_ruby() {
+  if which rvm-prompt &> /dev/null; then
+    prompt_segment black default "$(rvm-prompt i v g)"
+  else
+    if which rbenv &> /dev/null; then
+      prompt_segment black default "$(rbenv version | sed -e "s/ (set.*$//")"
+    fi
+  fi
+
 }
 
 ## Main prompt
@@ -211,7 +218,7 @@ build_prompt() {
   prompt_status
   prompt_virtualenv
   prompt_context
-  prompt_rvm
+  prompt_ruby
   prompt_git
   prompt_hg
   prompt_dir
