@@ -15,24 +15,24 @@
 
 THOB_BRACKET_COLOR="%{$fg[white]%}"
 THOB_TIME_COLOR="%{$fg[yellow]%}"
-THOB_RVM_COLOR="%{$fg[magenta]%}"
+THOB_RVM_COLOR="%{$fg[default]%}"
 THOB_DIR_COLOR="%{$fg[cyan]%}"
 THOB_GIT_BRANCH_COLOR="%{$fg[green]%}"
 THOB_GIT_CLEAN_COLOR="%{$fg[green]%}"
 THOB_GIT_DIRTY_COLOR="%{$fg[red]%}"
 
 # These Git variables are used by the oh-my-zsh git_prompt_info helper:
-ZSH_THEME_GIT_PROMPT_PREFIX="$THOB_BRACKET_COLOR:$THOB_GIT_BRANCH_COLOR"
+ZSH_THEME_GIT_PROMPT_PREFIX=" $THOB_BRACKET_COLOR: $THOB_GIT_BRANCH_COLOR"
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_CLEAN=" $THOB_GIT_CLEAN_COLOR✓"
 ZSH_THEME_GIT_PROMPT_DIRTY=" $THOB_GIT_DIRTY_COLOR✗"
 
 # Our elements:
 if [ -e ~/.rvm/bin/rvm-prompt ]; then
-  THOB_RVM_="$THOB_BRACKET_COLOR"["$THOB_RVM_COLOR\${\$(~/.rvm/bin/rvm-prompt i v g)#ruby-}$THOB_BRACKET_COLOR"]"%{$reset_color%}"
+  THOB_RVM_=" $THOB_RVM_COLOR\${\$(~/.rvm/bin/rvm-prompt i v g)#ruby-} %{$reset_color%}"
 else
   if which rbenv &> /dev/null; then
-    THOB_RVM_="$THOB_BRACKET_COLOR"["$THOB_RVM_COLOR\${\$(rbenv version | sed -e 's/ (set.*$//' -e 's/^ruby-//')}$THOB_BRACKET_COLOR"]"%{$reset_color%}"
+    THOB_RVM_=" $THOB_RVM_COLOR\${\$(rbenv version | sed -e 's/ (set.*$//' -e 's/^ruby-//')} %{$reset_color%}"
   fi
 fi
 THOB_DIR_="$THOB_DIR_COLOR%~\$(git_prompt_info) "
