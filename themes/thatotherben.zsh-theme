@@ -42,7 +42,7 @@ THOB_GIT_="$THOB_GIT_COLOR\$(git_prompt_info)"
 
 THOB_DIR_="$THOB_DIR_COLOR%~"
 
-THOB_PROMPT_="$THOB_BRACKET_COLOR$"
+THOB_PROMPT_=$THOB_HAPPY_COLOR"λ"
 
 THOB_HAPPY_=$THOB_HAPPY_COLOR"ʕ•◡•ʔ"
 
@@ -60,4 +60,4 @@ fi
 
 
 # Put it all together!
-PROMPT="$THOB_HAPPY_ $THOB_DIR_ $THOB_RVM_ $THOB_GIT_$THOB_PROMPT_%{$reset_color%} "
+PROMPT="$THOB_HAPPY_ $THOB_DIR_ $THOB_RVM_ $THOB_GIT_ $THOB_PROMPT_%{$reset_color%} "
