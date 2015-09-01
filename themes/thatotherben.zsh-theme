@@ -60,4 +60,4 @@ fi
 
 
 # Put it all together!
-PROMPT="$THOB_HAPPY_ $THOB_DIR_ $THOB_RVM_ $THOB_GIT_ $THOB_PROMPT_%{$reset_color%} "
+PROMPT="$THOB_HAPPY_ $THOB_DIR_ $THOB_RVM_$THOB_GIT_$THOB_PROMPT_%{$reset_color%} "
