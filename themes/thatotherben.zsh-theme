@@ -29,15 +29,6 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_PROMPT_CLEAN="$THOB_GIT_CLEAN_COLOR(clean)"
 ZSH_THEME_GIT_PROMPT_DIRTY="$THOB_GIT_DIRTY_COLOR(dirty)"
 
-# Our elements:
-if [ -e ~/.rvm/bin/rvm-prompt ]; then
-  THOB_RVM_="$THOB_RUBY_COLOR\${\$(~/.rvm/bin/rvm-prompt i v g)#ruby-}%{$reset_color%}"
-else
-  if which rbenv &> /dev/null; then
-    THOB_RVM_="$THOB_RUBY_COLOR"ruby-"\${\$(rbenv version | sed -e 's/ (set.*$//' -e 's/^ruby-//')}%{$reset_color%}"
-  fi
-fi
-
 THOB_GIT_="$THOB_GIT_COLOR\$(git_prompt_info)"
 
 THOB_DIR_="$THOB_DIR_COLOR%~"
@@ -60,4 +51,4 @@ fi
 
 
 # Put it all together!
-PROMPT="$THOB_HAPPY_ $THOB_DIR_ $THOB_RVM_ $THOB_GIT_ $THOB_PROMPT_%{$reset_color%} "
+PROMPT="$THOB_HAPPY_ $THOB_DIR_ $THOB_GIT_ $THOB_PROMPT_%{$reset_color%} "
